@@ -1,6 +1,9 @@
+export LANG=en_us.UTF-8
+
+alias lsd='ls -d --color */'
+alias vi='vim'
 alias ll='ls -l'
 alias rmqrtn='xattr -d com.apple.quarantine' 
-export LANG=en_us.UTF-8
 
 # for pyenv
 eval "$(pyenv init -)"
