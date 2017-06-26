@@ -24,6 +24,12 @@ Bundle 'davidhalter/jedi-vim'
 "docker file support
 Plugin 'ekalinin/Dockerfile.vim'
 
+"syntax highlighing for mustache templating
+Bundle 'mustache/vim-mustache-handlebars'
+
+" json syntax highlighting
+Plugin 'elzr/vim-json'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -150,12 +156,17 @@ autocmd BufReadPost *
 	\   exe "normal g`\"" |
   \ endif
 
-augroup json_autocmd 
-    autocmd! 
-    autocmd FileType json set autoindent 
-    autocmd FileType json set formatoptions=tcq2l 
-    autocmd FileType json set textwidth=78 shiftwidth=2 
-    autocmd FileType json set softtabstop=2 tabstop=8 
-    autocmd FileType json set expandtab 
-    autocmd FileType json set foldmethod=syntax 
-augroup END
+" I don't expect to need this json stuff now that I am using vim-json plugin
+" but keeping it until I use vim-json more
+" augroup json_autocmd 
+"    autocmd! 
+"    autocmd FileType json set autoindent 
+"    autocmd FileType json set formatoptions=tcq2l 
+"    autocmd FileType json set textwidth=78 shiftwidth=2 
+"    autocmd FileType json set softtabstop=2 tabstop=8 
+"    autocmd FileType json set expandtab 
+"    autocmd FileType json set foldmethod=syntax 
+" augroup END
+
+" turn off vim 7.3 conceal feature for vim-json plugin
+let g:vim_json_syntax_conceal = 0
