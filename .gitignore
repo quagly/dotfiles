@@ -1,0 +1,5 @@
+# ignore vim temp files
+*.sw[op]
+
+# ignore OSX 'folder' metadata
+.DS_Store
