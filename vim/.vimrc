@@ -30,6 +30,9 @@ Bundle 'mustache/vim-mustache-handlebars'
 " json syntax highlighting
 Plugin 'elzr/vim-json'
 
+"vim color schemes
+Bundle 'flazz/vim-colorschemes'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -57,7 +60,7 @@ set showmatch
 set ruler
 set hlsearch
 set paste
-color desertEx
+color desert256
 " set vim current working directory to script directory
 set autochdir
 " use nerdtree to file browse with F2
