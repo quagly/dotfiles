@@ -1,14 +1,15 @@
 #!/bin/bash
 
-#. ~/.bashrc
+. ~/.bashrc
 
 set -o vi
 
 # pyenv
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PATH="/home/mwest/.pyenv/bin:$PATH"
-# rehash takes a few seconds and only needs to be run when changing install
-eval "$(pyenv init - --no-rehash)"
+if type -P pyenv > /dev/null 2>&1; then
+	export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+	export PATH="/home/mwest/.pyenv/bin:$PATH"
+ 	eval "$(pyenv init - )"
+fi
 
 export PS1="($(pyenv version-name)) \[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[33;1m\]\w\[\033[m\]$ "
 export CLICOLOR=1
@@ -19,5 +20,5 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 
 # initialize bash completion if exists
 # where else should I look?  MacPorts and Homebrew put it here on OSX
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
-[ -f /usr/local/share/bash-completion/bash_completion ] && . /usr/local/share/bash-completion/bash_completion
+[ -f /usr/local/etc/bash_completion ] && source /usr/local/etc/bash_completion
+[ -f /usr/local/share/bash-completion/bash_completion ] && source /usr/local/share/bash-completion/bash_completion
