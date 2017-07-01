@@ -9,9 +9,11 @@ if type -P pyenv > /dev/null 2>&1; then
 	export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 	export PATH="/home/mwest/.pyenv/bin:$PATH"
  	eval "$(pyenv init - )"
+	export PS1="($(pyenv version-name)) \[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[33;1m\]\w\[\033[m\]$ "
+else
+	export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[33;1m\]\w\[\033[m\]$ "
 fi
 
-export PS1="($(pyenv version-name)) \[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[33;1m\]\w\[\033[m\]$ "
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
