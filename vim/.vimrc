@@ -15,6 +15,10 @@ Plugin 'VundleVim/Vundle.vim'
 
 " file browser
 Bundle 'scrooloose/nerdtree'
+
+" syntax checker
+Bundle 'scrooloose/syntastic'
+
 " use python-mode for python code
 Bundle 'klen/python-mode'
 
@@ -35,6 +39,7 @@ Bundle 'flazz/vim-colorschemes'
 
 "status line
 Plugin 'bling/vim-airline'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -130,6 +135,17 @@ let g:jedi#popup_select_first = 1
 "let g:jedi#rename_command = "<leader>r"  
 "let g:jedi#related_names_command = "<leader>n"  
 "let g:jedi#autocompletion_command = "<C-Space>"
+
+" use recommended defaults instead of actual defaults for Bundle 'scrooloose/syntastic'
+" until I learn my preferences
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " use custom antlr3 syntax for grammer files
 au BufRead,BufNewFile *.g set syntax=antlr3
