@@ -33,6 +33,9 @@ Plugin 'elzr/vim-json'
 "vim color schemes
 Bundle 'flazz/vim-colorschemes'
 
+"status line
+Plugin 'bling/vim-airline'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
