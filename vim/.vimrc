@@ -97,7 +97,10 @@ let g:pymode_doc = 1
 let g:pymode_doc_key = 'K'
 
 "Linting
-let g:pymode_lint = 1
+" turning off python linting for now as it throws errors in my docker container centos7
+" work fine on OSX where brew has a slightly more recent version of vim
+" need to resolve.  Possibly related to adding syntastic bundle
+let g:pymode_lint = 0 
 let g:pymode_lint_checker = "pyflakes,pep8"
 " Auto check on save
 let g:pymode_lint_write = 1
