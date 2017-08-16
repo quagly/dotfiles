@@ -40,6 +40,9 @@ Bundle 'flazz/vim-colorschemes'
 "status line
 Plugin 'bling/vim-airline'
 
+"clojure repl integration and other goodness
+Bundle 'tpope/vim-fireplace'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
