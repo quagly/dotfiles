@@ -67,7 +67,9 @@ set expandtab
 set showmatch
 set ruler
 set hlsearch
-set paste
+" don't paste mode by default or various formating setting will be disabled always.  
+" for example, expandtab
+" set paste
 color desert256
 " set vim current working directory to script directory
 set autochdir
