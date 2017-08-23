@@ -183,6 +183,10 @@ au BufNewFile,BufRead *.gradle setf groovy
 " json syntax highlighting
 au! BufRead,BufNewFile *.json set filetype=json 
 
+" edm syntax highlighting
+" https://github.com/edn-format/edn
+au! BufRead,BufNewFile *.edn set filetype=clojure 
+
 " open files at last position
 autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
