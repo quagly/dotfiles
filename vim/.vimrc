@@ -155,6 +155,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" turn off vim 7.3 conceal feature for vim-json plugin
+let g:vim_json_syntax_conceal = 0
+
 " use custom antlr3 syntax for grammer files
 au BufRead,BufNewFile *.g set syntax=antlr3
 
@@ -162,7 +165,6 @@ au BufRead,BufNewFile *.g set syntax=antlr3
 " note there is another $ delimited syntax file I am not using now
 " au BufRead,BufNewFile *.stg set syntax=stringtemplatedollar
 au BufRead,BufNewFile *.stg set syntax=stringtemplate
-
 
 " use ant sytax instead of xml for ant build files
 " anything with build in the name with extention xml 
@@ -193,17 +195,8 @@ autocmd BufReadPost *
 	\   exe "normal g`\"" |
   \ endif
 
-" I don't expect to need this json stuff now that I am using vim-json plugin
-" but keeping it until I use vim-json more
-" augroup json_autocmd 
-"    autocmd! 
-"    autocmd FileType json set autoindent 
-"    autocmd FileType json set formatoptions=tcq2l 
-"    autocmd FileType json set textwidth=78 shiftwidth=2 
-"    autocmd FileType json set softtabstop=2 tabstop=8 
-"    autocmd FileType json set expandtab 
-"    autocmd FileType json set foldmethod=syntax 
-" augroup END
+" remove trailing whitespace on write for everyfile
+" note this is a bad idea if trailing whitespace is important for somefile
+" can't think of an example
+autocmd BufWritePre * %s/\s\+$//e
 
-" turn off vim 7.3 conceal feature for vim-json plugin
-let g:vim_json_syntax_conceal = 0
