@@ -5,9 +5,9 @@
 set -o vi
 
 # pyenv
-if type -P pyenv > /dev/null 2>&1; then
+if [ -e $HOME/.pyenv/bin/pyenv ]; then
 	export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-	export PATH="/home/mwest/.pyenv/bin:$PATH"
+	export PATH="$HOME/.pyenv/bin:$PATH"
  	eval "$(pyenv init - )"
 	export PS1="($(pyenv version-name)) \[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[33;1m\]\w\[\033[m\]$ "
 else
