@@ -5,7 +5,8 @@
 set -o vi
 
 # pyenv
-if [ -e $HOME/.pyenv/bin/pyenv ]; then
+# either pyenv in git cloned in home or provided by system
+if [ -e $HOME/.pyenv/bin/pyenv ] || type -P pyenv 2>&1 > /dev/null; then
 	export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 	export PATH="$HOME/.pyenv/bin:$PATH"
  	eval "$(pyenv init - )"
