@@ -26,6 +26,9 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 [ -f /usr/local/etc/bash_completion ] && source /usr/local/etc/bash_completion
 [ -f /usr/local/share/bash-completion/bash_completion ] && source /usr/local/share/bash-completion/bash_completion
 
+# use local bashrc if it exists
+[[ -s ~/.bashrc_local ]] && source ~/.bashrc_local
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR=~/.sdkman
 [[ -s ~/.sdkman/bin/sdkman-init.sh ]] && source ~/.sdkman/bin/sdkman-init.sh
