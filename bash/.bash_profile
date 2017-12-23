@@ -16,7 +16,7 @@ else
 fi
 
 # auto enable pyenv-virtualenv if exists
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+if which pyenv-virtualenv-init > 2>&1 /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # if I have my on bin add it to my path
 [ -d $HOME/bin ] && export PATH=$PATH:$HOME/bin
