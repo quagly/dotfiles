@@ -11,12 +11,15 @@ if [ -e $HOME/.pyenv/bin/pyenv ] || type -P pyenv 2>&1 > /dev/null; then
 	export PATH="$HOME/.pyenv/bin:$PATH"
  	eval "$(pyenv init - )"
 	export PS1="($(pyenv version-name)) \[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[33;1m\]\w\[\033[m\]$ "
+  # activate pyenv-virtualenv if exists in git cloned or provided by system
+  if [ -e $(pyenv root)/.pyenv/plugins/pyenv-virtualenv ] || type -P pyenv-virtualenv 2>&1 > /dev/null; then
+    # auto enable pyenv-virtualenv virtual envionments
+    eval "$(pyenv virtualenv-init -)"
+  fi
 else
 	export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[33;1m\]\w\[\033[m\]$ "
 fi
 
-# auto enable pyenv-virtualenv if exists
-if which pyenv-virtualenv-init > 2>&1 /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # if I have my on bin add it to my path
 [ -d $HOME/bin ] && export PATH=$PATH:$HOME/bin
