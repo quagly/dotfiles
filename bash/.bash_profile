@@ -7,6 +7,9 @@ set -o vi
 # pyenv
 # either pyenv in git cloned in home or provided by system
 if [ -e $HOME/.pyenv/bin/pyenv ] || type -P pyenv 2>&1 > /dev/null; then
+  # ensure PYENV_VERSION environment vairable is not set so that
+  # .python_version files and pyenv local and global settings are honored
+  unset PYENV_VERSION
 	export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 	export PATH="$HOME/.pyenv/bin:$PATH"
  	eval "$(pyenv init - )"
