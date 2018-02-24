@@ -43,6 +43,12 @@ Plugin 'bling/vim-airline'
 "clojure repl integration and other goodness
 Bundle 'tpope/vim-fireplace'
 
+"google protobuf
+Bundle 'uarun/vim-protobuf'
+
+"scala
+Plugin 'derekwyatt/vim-scala'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -70,7 +76,7 @@ set expandtab
 set showmatch
 set ruler
 set hlsearch
-" don't paste mode by default or various formating setting will be disabled always.  
+" don't paste mode by default or various formating setting will be disabled always.
 " for example, expandtab
 " set paste
 color desert256
@@ -105,7 +111,7 @@ let g:pymode_doc_key = 'K'
 " turning off python linting for now as it throws errors in my docker container centos7
 " work fine on OSX where brew has a slightly more recent version of vim
 " need to resolve.  Possibly related to adding syntastic bundle
-let g:pymode_lint = 0 
+let g:pymode_lint = 0
 let g:pymode_lint_checker = "pyflakes,pep8"
 " Auto check on save
 let g:pymode_lint_write = 1
@@ -138,10 +144,10 @@ let g:pymode_options_max_line_length = 132
 " autocompletes as you type
 " may be slow for large modules
 let g:jedi#popup_select_first = 1
-"let g:jedi#goto_command = "<leader>g"  
-"let g:jedi#get_definition_command = "<leader>d"  
-"let g:jedi#rename_command = "<leader>r"  
-"let g:jedi#related_names_command = "<leader>n"  
+"let g:jedi#goto_command = "<leader>g"
+"let g:jedi#get_definition_command = "<leader>d"
+"let g:jedi#rename_command = "<leader>r"
+"let g:jedi#related_names_command = "<leader>n"
 "let g:jedi#autocompletion_command = "<C-Space>"
 
 " use recommended defaults instead of actual defaults for Bundle 'scrooloose/syntastic'
@@ -167,27 +173,27 @@ au BufRead,BufNewFile *.g set syntax=antlr3
 au BufRead,BufNewFile *.stg set syntax=stringtemplate
 
 " use ant sytax instead of xml for ant build files
-" anything with build in the name with extention xml 
+" anything with build in the name with extention xml
 au BufRead,BufNewFile *build*.xml set filetype=ant
 
-" llvm text assembler syntax highlighting 
+" llvm text assembler syntax highlighting
 au BufRead,BufNewFile *.ll set filetype=llvm
 
-" pig latin syntax highlighting 
+" pig latin syntax highlighting
 au BufRead,BufNewFile *.pig set filetype=pig
 
-" asciidoc syntax highlighting 
+" asciidoc syntax highlighting
 au BufRead,BufNewFile *.adoc set filetype=asciidoc
 
 " use groovy syntax highlighting for gradle build scripts
 au BufNewFile,BufRead *.gradle setf groovy
 
 " json syntax highlighting
-au! BufRead,BufNewFile *.json set filetype=json 
+au! BufRead,BufNewFile *.json set filetype=json
 
 " edm syntax highlighting
 " https://github.com/edn-format/edn
-au! BufRead,BufNewFile *.edn set filetype=clojure 
+au! BufRead,BufNewFile *.edn set filetype=clojure
 
 " open files at last position
 autocmd BufReadPost *
