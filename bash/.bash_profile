@@ -35,8 +35,13 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 [ -f /usr/local/etc/bash_completion ] && source /usr/local/etc/bash_completion
 [ -f /usr/local/share/bash-completion/bash_completion ] && source /usr/local/share/bash-completion/bash_completion
 
-AWS_COMPLETER=$(which aws_completer)
-[ -f $AWS_COMPLETER ] && complete -C $AWS_COMPLETER aws
+# this probably needs more checks.  Does complete exist?  bundle with above bash completion check
+AWS_COMPLETER=$(which aws_completer 2>/dev/null)
+if [ -z ${AWS_COMPLETER} ]; then
+  echo "no aws completer found aws cli completion not set"
+else
+  complete -C ${AWS_COMPLETER} aws
+fi
 
 # use local bashrc if it exists
 [[ -s ~/.bashrc_local ]] && source ~/.bashrc_local
