@@ -24,7 +24,6 @@ else
 	export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[33;1m\]\w\[\033[m\]$ "
 fi
 
-
 # if I have my on bin add it to my path
 [ -d $HOME/bin ] && export PATH=$PATH:$HOME/bin
 
@@ -35,6 +34,9 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 # where else should I look?  MacPorts and Homebrew put it here on OSX
 [ -f /usr/local/etc/bash_completion ] && source /usr/local/etc/bash_completion
 [ -f /usr/local/share/bash-completion/bash_completion ] && source /usr/local/share/bash-completion/bash_completion
+
+AWS_COMPLETER=$(which aws_completer)
+[ -f $AWS_COMPLETER ] && complete -C $AWS_COMPLETER aws
 
 # use local bashrc if it exists
 [[ -s ~/.bashrc_local ]] && source ~/.bashrc_local
