@@ -100,6 +100,11 @@ map <F2> :NERDTreeToggle<CR>
 " [M            Jump on previous class or method (normal, visual, operator modes)
 " ]M            Jump on next class or method (normal, visual, operator modes)
 
+" set python 2.  Need vim with python3 compiled in for python3
+" check
+" :version
+" to see compile time options
+let g:pymode_python = 'python'
 " using jedi-vim for autocompletion so disable rope
 let g:pymode_rope = 0
 
