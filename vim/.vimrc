@@ -200,6 +200,9 @@ au! BufRead,BufNewFile *.json set filetype=json
 " https://github.com/edn-format/edn
 au! BufRead,BufNewFile *.edn set filetype=clojure
 
+" md extention always means markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
 " open files at last position
 autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -210,4 +213,5 @@ autocmd BufReadPost *
 " note this is a bad idea if trailing whitespace is important for somefile
 " can't think of an example
 autocmd BufWritePre * %s/\s\+$//e
+
 

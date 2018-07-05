@@ -43,6 +43,14 @@ else
   complete -C ${AWS_COMPLETER} aws
 fi
 
+# test if running in a container
+# not sure how generally this will work
+CGROUP='/proc/1/cgroup'
+if [ -r $CGROUP ] && head -1 $CGROUP | grep --quiet docker; then
+  # copy d
+  echo "running in container"
+fi
+
 # use local bashrc if it exists
 [[ -s ~/.bashrc_local ]] && source ~/.bashrc_local
 
