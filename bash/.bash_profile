@@ -47,8 +47,9 @@ fi
 # not sure how generally this will work
 CGROUP='/proc/1/cgroup'
 if [ -r $CGROUP ] && head -1 $CGROUP | grep --quiet docker; then
-  # copy d
-  echo "running in container"
+  if [ -r $HOME/.docker-extras/.databrickscfg ];then
+    cp $HOME/.docker-extras/.databrickscfg $HOME/.databrickscfg
+  fi
 fi
 
 # use local bashrc if it exists
