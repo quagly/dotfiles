@@ -27,6 +27,10 @@ fi
 # if I have my on bin add it to my path
 [ -d $HOME/bin ] && export PATH=$PATH:$HOME/bin
 
+# if I have gnubin from coreutils install from homebrew
+# prefer those binaries to osx installed binaries
+[ -d /usr/local/opt/coreutils/libexec/gnubin ] && export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
