@@ -29,6 +29,13 @@ fi
 # this allows me to use my own version of tools such as tmux
 [ -d $HOME/bin ] && export PATH=$HOME/bin:$PATH
 
+# if I have gnubin from coreutils install from homebrew
+# prefer those binaries to osx installed binaries
+[ -d /usr/local/opt/coreutils/libexec/gnubin ] && export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+
+# if I have qt then add to path
+[ -d /usr/local/opt/qt/bin ] && export PATH=/usr/local/opt/qt/bin:$PATH
+
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
