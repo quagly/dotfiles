@@ -43,6 +43,7 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 # where else should I look?  MacPorts and Homebrew put it here on OSX
 [ -f /usr/local/etc/bash_completion ] && source /usr/local/etc/bash_completion
 [ -f /usr/local/share/bash-completion/bash_completion ] && source /usr/local/share/bash-completion/bash_completion
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
 # this probably needs more checks.  Does complete exist?  bundle with above bash completion check
 AWS_COMPLETER=$(which aws_completer 2>/dev/null)
