@@ -1,0 +1,13 @@
+# global personal gitignore
+
+# Mac
+.DS_Store
+
+# intellij
+.idea/
+
+# ignore .python_version virtual env
+.python_version
+
+# ignore vim temp files
+*.sw[op]

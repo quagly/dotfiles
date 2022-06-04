@@ -32,6 +32,10 @@ fi
 # if I have gnubin from coreutils install from homebrew
 # prefer those binaries to osx installed binaries
 [ -d /usr/local/opt/coreutils/libexec/gnubin ] && export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+[ -d /opt/homebrew/opt/coreutils/libexec/gnubin ] && export PATH=/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH
+
+# add homebrew bin to path if exist
+[ -d /opt/homebrew/bin ] && export PATH=/opt/homebrew/bin:$PATH
 
 # if I have qt then add to path
 [ -d /usr/local/opt/qt/bin ] && export PATH=/usr/local/opt/qt/bin:$PATH
