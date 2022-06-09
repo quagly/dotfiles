@@ -12,7 +12,9 @@ if [ -e $HOME/.pyenv/bin/pyenv ] || type -P pyenv 2>&1 > /dev/null; then
   unset PYENV_VERSION
 	export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 	export PATH="$HOME/.pyenv/bin:$PATH"
- 	eval "$(pyenv init --path)"
+ 	# eval "$(pyenv init --path)"
+  # need this one for bash autocompetion and shell functions.
+  eval "$(pyenv init -)"
   # note backslash \$() for updates
 	export PS1="(\$(pyenv version-name)) \[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[33;1m\]\w\[\033[m\]$ "
   # activate pyenv-virtualenv if exists in git cloned or provided by system
