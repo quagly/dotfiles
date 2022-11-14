@@ -1,69 +1,11 @@
-" vundle vim plugin manager settings must come first
-" vundle installed with command
-" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" vimrc from scratch for vim 9
+" Mike West at the beach 2022-11-12
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" file browser
-Bundle 'scrooloose/nerdtree'
-
-" syntax checker
-Bundle 'scrooloose/syntastic'
-
-" use python-mode for python code
-Bundle 'klen/python-mode'
-
-"auto-completion for python
-Bundle 'davidhalter/jedi-vim'
-
-"docker file support
-Plugin 'ekalinin/Dockerfile.vim'
-
-"syntax highlighing for mustache templating
-Bundle 'mustache/vim-mustache-handlebars'
-
-" json syntax highlighting
-Plugin 'elzr/vim-json'
-
-"vim color schemes
-Bundle 'flazz/vim-colorschemes'
-
-"status line
-Plugin 'bling/vim-airline'
-
-"clojure repl integration and other goodness
-Bundle 'tpope/vim-fireplace'
-
-"google protobuf
-Bundle 'uarun/vim-protobuf'
-
-"scala
-Plugin 'derekwyatt/vim-scala'
-
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+set nocompatible
+filetype off
+" detect filetypes
+" filetype setting requried for pymode
+filetype indent plugin on
 
 syntax enable
 set background=dark
@@ -76,75 +18,103 @@ set expandtab
 set showmatch
 set ruler
 set hlsearch
-" don't paste mode by default or various formating setting will be disabled always.
-" for example, expandtab
-" set paste
-color desert256
-" set vim current working directory to script directory
 set autochdir
-" use nerdtree to file browse with F2
-map <F2> :NERDTreeToggle<CR>
 
-" BEGIN python-mode settings
-" Python-mode
-" Activate rope
-" Keys:
-" K             Show python docs
-" <Ctrl-Space>  Rope autocomplete
-" <Ctrl-c>g     Rope goto definition
-" <Ctrl-c>d     Rope show documentation
-" <Ctrl-c>f     Rope find occurrences
-" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
-" [[            Jump on previous class or function (normal, visual, operator modes)
-" ]]            Jump on next class or function (normal, visual, operator modes)
-" [M            Jump on previous class or method (normal, visual, operator modes)
-" ]M            Jump on next class or method (normal, visual, operator modes)
+color desert256v2
 
-" set python 2.  Need vim with python3 compiled in for python3
-" check
-" :version
-" to see compile time options
-let g:pymode_python = 'python'
-" using jedi-vim for autocompletion so disable rope
-let g:pymode_rope = 0
+" START python-mode
+"
+" options https://github.com/python-mode/python-mode/blob/develop/doc/pymode.txt
+" completely enable/disable pymode  1/0
+let g:pymode = 1
+
+" I used to prefer jedi-vim for completion
+" but it isn't working right now
+" may look at new completion plugins
+" enable rope for now
+let g:pymode_rope = 1
+
+" turn on/off completion
+let g:pymode_rope_completion = 1
+" try control-x unless you remap it
+" for example control-x n for auto completion
+" use control c
+" let g:pymode_rope_refix = '<C-c>'
+" do not autocomplete for modules that are not imported
+let g:pymode_rope_autoimport = 0
+" turn on auto completion when typing a period
+let g:pymode_rope_complete_on_dot = 1
+
+"  GOTO definition
+let g:pymode_rope_goto_definition_bind = '<C-c>g'
 
 " Documentation
 let g:pymode_doc = 1
 let g:pymode_doc_key = 'K'
 
-"Linting
-" turning off python linting for now as it throws errors in my docker container centos7
-" work fine on OSX where brew has a slightly more recent version of vim
-" need to resolve.  Possibly related to adding syntastic bundle
-let g:pymode_lint = 0
+" Linting
+let g:pymode_lint = 1
 let g:pymode_lint_checker = "pyflakes,pep8"
 " Auto check on save
 let g:pymode_lint_write = 1
 
-" Support virtualenv
-let g:pymode_virtualenv = 1
-
-" Enable breakpoints plugin
-let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_bind = '<leader>b'
-
-" syntax highlighting
+" Syntax highlighting
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_syntax_indent_errors = g:pymode_syntax_all
 let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
+" Support virtualenv
+let g:pymode_virtualenv = 1
+
+" use smart python motions
+let g:pymode_motion = 1
+
 " Don't autofold code
 let g:pymode_folding = 0
 
-" extend line-length
+" Extend line-length
 let g:pymode_options_max_line_length = 132
+" show color column at max line length
+let g:pymode_options_colorcolumn = 1
 
 " END python-mode
 
-" BEGIN jedi-vim
-" just a collection of setting I found
-" don't really understand them
+" START ALE
+" inline python format checker and fixer
+" to see how ALE is configured for any buffer
+" :ALEInfo
+
+" Configure fixers by filetype
+" * is global
+"
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'python': ['autopep8'],
+\}
+
+" Only run linters named in ale_linters settings.
+" off for now
+let g:ale_linters_explicit = 0
+
+" linters I installed
+let g:ale_linters={
+\ 'python': ['flake8'],
+\}
+
+" Airline status integration
+let g:airline#extensions#ale#enabled = 1
+
+" ALE can help with completions
+" leave off for now, try later
+let g:ale_completion_enabled = 0
+
+" END ALE
+
+" START jedi-vim
+
+" turn on/off jedi-vim
+let g:jedi#auto_initialization = 0
 
 " autocompletes as you type
 " may be slow for large modules
@@ -155,63 +125,46 @@ let g:jedi#popup_select_first = 1
 "let g:jedi#related_names_command = "<leader>n"
 "let g:jedi#autocompletion_command = "<C-Space>"
 
-" use recommended defaults instead of actual defaults for Bundle 'scrooloose/syntastic'
-" until I learn my preferences
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" END jedi-vim
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+
+" START vim-json
 
 " turn off vim 7.3 conceal feature for vim-json plugin
+" otherwise we cannot tell the difference between number, booleans, and
+" strings
+" see https://github.com/elzr/vim-json/issues/37
 let g:vim_json_syntax_conceal = 0
 
-" use custom antlr3 syntax for grammer files
-au BufRead,BufNewFile *.g set syntax=antlr3
+" END vim-json
 
-" use angle bracket syntax for stringtemplate group files
-" note there is another $ delimited syntax file I am not using now
-" au BufRead,BufNewFile *.stg set syntax=stringtemplatedollar
-au BufRead,BufNewFile *.stg set syntax=stringtemplate
+" edn syntax highlighting
+" edn is a data format description that clojure/datatomic uses
+" https://github.com/edn-format/edn
+autocmd BufRead,BufNewFile *.edn setf clojure
 
 " use ant sytax instead of xml for ant build files
 " anything with build in the name with extention xml
-au BufRead,BufNewFile *build*.xml set filetype=ant
-
-" llvm text assembler syntax highlighting
-au BufRead,BufNewFile *.ll set filetype=llvm
-
-" pig latin syntax highlighting
-au BufRead,BufNewFile *.pig set filetype=pig
+autocmd BufRead,BufNewFile *build*.xml setf ant
 
 " asciidoc syntax highlighting
-au BufRead,BufNewFile *.adoc set filetype=asciidoc
+autocmd BufRead,BufNewFile *.adoc setf asciidoc
 
 " use groovy syntax highlighting for gradle build scripts
-au BufNewFile,BufRead *.gradle setf groovy
+autocmd BufNewFile,BufRead *.gradle setf groovy
 
-" json syntax highlighting
-au! BufRead,BufNewFile *.json set filetype=json
-
-" edm syntax highlighting
-" https://github.com/edn-format/edn
-au! BufRead,BufNewFile *.edn set filetype=clojure
+" llvm text assembler syntax highlighting
+autocmd BufRead,BufNewFile *.ll setf llvm
 
 " md extention always means markdown
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost *.md setf markdown
 
-" open files at last position
-autocmd BufReadPost *
-  \ if line("'\"") > 0 && line("'\"") <= line("$") |
-	\   exe "normal g`\"" |
-  \ endif
+" open file where we left off
+autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " remove trailing whitespace on write for everyfile
 " note this is a bad idea if trailing whitespace is important for somefile
 " can't think of an example
-autocmd BufWritePre * %s/\s\+$//e
-
-
+" note that the ALE plugin does this now
+" leaving this here until I commit to using ALE
+# autocmd BufWritePre * %s/\s\+$//e
