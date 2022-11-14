@@ -94,8 +94,9 @@ let g:ale_fixers = {
 \}
 
 " Only run linters named in ale_linters settings.
-" off for now
-let g:ale_linters_explicit = 0
+" one because pylama does not know about exception groups in 3.11.0 yet 
+" 2022-11-14
+let g:ale_linters_explicit = 1
 
 " linters I installed
 let g:ale_linters={
