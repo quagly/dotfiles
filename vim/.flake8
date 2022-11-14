@@ -1,0 +1,13 @@
+[flake8]
+exclude=__init__.py, .git, venv
+
+max-line-length = 132
+
+#ignore =
+  #I201,
+  #E501,
+  #F401,
+  #F841,
+  #F403,
+  #E402
+
