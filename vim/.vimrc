@@ -167,4 +167,4 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "norm
 " can't think of an example
 " note that the ALE plugin does this now
 " leaving this here until I commit to using ALE
-# autocmd BufWritePre * %s/\s\+$//e
+" autocmd BufWritePre * %s/\s\+$//e
