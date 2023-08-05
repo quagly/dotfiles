@@ -92,6 +92,7 @@ let g:pymode_options_colorcolumn = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'python': ['autopep8'],
+\   'rust': ['rustfmt'],
 \}
 
 " Only run linters named in ale_linters settings.
@@ -102,6 +103,7 @@ let g:ale_linters_explicit = 1
 " linters I installed
 let g:ale_linters={
 \ 'python': ['flake8'],
+\ 'rust': ['analyzer'],
 \}
 
 " Airline status integration

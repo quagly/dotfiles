@@ -97,6 +97,14 @@ fi
 
 ## START syntax
 
+# rust syntax
+folder="${HOME}/.vim/pack/syntax/start/rust"
+if [ -d $folder ]; then
+  git -C $folder pull
+else
+  git clone  https://github.com/rust-lang/rust.vim.git $folder
+fi
+
 # dockerfile syntax
 folder="${HOME}/.vim/pack/syntax/start/dockerfile"
 if [ -d $folder ]; then
