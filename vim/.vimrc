@@ -110,9 +110,12 @@ let g:ale_linters={
 let g:airline#extensions#ale#enabled = 1
 
 " ALE can help with completions
-" leave off for now, try later
-let g:ale_completion_enabled = 0
-
+" As-you-type autocomplete
+set completeopt=menu,menuone,preview,noselect,noinsert
+let g:ale_completion_enabled = 1
+"  goto definition by control left mouse. 
+"  I forget what keybinding I like for this
+" nnoremap <C-LeftMouse> :ALEGoToDefinition<CR>
 " END ALE
 
 " START jedi-vim
