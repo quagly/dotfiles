@@ -82,3 +82,4 @@ export SDKMAN_DIR=~/.sdkman
 
 # rust environment
 [[ -s $HOME/.cargo/env ]] && source $HOME/.cargo/env
+. "$HOME/.cargo/env"

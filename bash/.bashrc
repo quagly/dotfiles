@@ -16,3 +16,4 @@ alias rmqrtn='xattr -d com.apple.quarantine'
 # reduntant with .bash_profile
 # rust environment
 [[ -s $HOME/.cargo/env ]] && source $HOME/.cargo/env
+. "$HOME/.cargo/env"
