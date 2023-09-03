@@ -4,6 +4,15 @@
 
 set -o vi
 
+
+# prepend homebrew to path first so that other prepends override it.
+[ -d /opt/homebrew/bin ] && export PATH=/opt/homebrew/bin:$PATH
+
+# if I have gnubin from coreutils install from homebrew
+# prefer those binaries to osx installed binaries
+[ -d /usr/local/opt/coreutils/libexec/gnubin ] && export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+[ -d /opt/homebrew/opt/coreutils/libexec/gnubin ] && export PATH=/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH
+
 # pyenv
 # either pyenv in git cloned in home or provided by system
 if [ -e $HOME/.pyenv/bin/pyenv ] || type -P pyenv 2>&1 > /dev/null; then
@@ -31,13 +40,7 @@ fi
 # this allows me to use my own version of tools such as tmux
 [ -d $HOME/bin ] && export PATH=$HOME/bin:$PATH
 
-# if I have gnubin from coreutils install from homebrew
-# prefer those binaries to osx installed binaries
-[ -d /usr/local/opt/coreutils/libexec/gnubin ] && export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
-[ -d /opt/homebrew/opt/coreutils/libexec/gnubin ] && export PATH=/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH
 
-# add homebrew bin to path if exist
-[ -d /opt/homebrew/bin ] && export PATH=/opt/homebrew/bin:$PATH
 
 # if I have qt then add to path
 [ -d /usr/local/opt/qt/bin ] && export PATH=/usr/local/opt/qt/bin:$PATH

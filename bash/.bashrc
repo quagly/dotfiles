@@ -12,8 +12,3 @@ alias rmqrtn='xattr -d com.apple.quarantine'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 [[ -s "~/.sdkman/bin/sdkman-init.sh" && -z $(which sdkman-init.sh | grep '/sdkman-init.sh') ]] && source "~/.sdkman/bin/sdkman-init.sh"
-
-# reduntant with .bash_profile
-# rust environment
-[[ -s $HOME/.cargo/env ]] && source $HOME/.cargo/env
-. "$HOME/.cargo/env"
