@@ -20,3 +20,5 @@ pr = git push origin HEAD && open $(gh pr create -f)
 ru = !"git ls-files -z -o --exclude-standard | xargs -0 rm"
 [pull]
   rebase = false
+[init]
+	defaultBranch = main
