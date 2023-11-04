@@ -93,6 +93,7 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'python': ['autopep8'],
 \   'rust': ['rustfmt'],
+\   'sh': ['shfmt'],
 \}
 
 " Only run linters named in ale_linters settings.
@@ -104,6 +105,7 @@ let g:ale_linters_explicit = 1
 let g:ale_linters={
 \ 'python': ['flake8'],
 \ 'rust': ['analyzer'],
+\ 'sh': ['shellcheck'],
 \}
 
 " Airline status integration
