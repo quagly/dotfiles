@@ -11,4 +11,5 @@ alias ll='ls --color -l'
 alias rmqrtn='xattr -d com.apple.quarantine'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-[[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" && -z $(which sdkman-init.sh | grep '/sdkman-init.sh') ]] && source "${HOME}/.sdkman/bin/sdkman-init.sh"
+# shellcheck source=/dev/null
+[[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "${HOME}/.sdkman/bin/sdkman-init.sh"

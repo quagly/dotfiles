@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # shellcheck source=.bashrc
-source ~/.bashrc
+source "${HOME}"/.bashrc
 
 set -o vi
 
