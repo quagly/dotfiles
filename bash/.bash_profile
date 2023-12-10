@@ -1,9 +1,9 @@
 #!/bin/bash
 
-. ~/.bashrc
+# shellcheck source=.bashrc
+source ~/.bashrc
 
 set -o vi
-
 
 # prepend homebrew to path first so that other prepends override it.
 [ -d /opt/homebrew/bin ] && export PATH=/opt/homebrew/bin:$PATH
@@ -15,7 +15,7 @@ set -o vi
 
 # pyenv
 # either pyenv in git cloned in home or provided by system
-if [ -e $HOME/.pyenv/bin/pyenv ] || type -P pyenv 2>&1 > /dev/null; then
+if [ -e "$HOME/.pyenv/bin/pyenv" ] || type -P pyenv > /dev/null 2>&1; then
   # ensure PYENV_VERSION environment vairable is not set so that
   # .python_version files and pyenv local and global settings are honored
   unset PYENV_VERSION
@@ -27,7 +27,7 @@ if [ -e $HOME/.pyenv/bin/pyenv ] || type -P pyenv 2>&1 > /dev/null; then
   # note backslash \$() for updates
 	export PS1="(\$(pyenv version-name)) \[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[33;1m\]\w\[\033[m\]$ "
   # activate pyenv-virtualenv if exists in git cloned or provided by system
-  if [ -e $(pyenv root)/.pyenv/plugins/pyenv-virtualenv ] || type -P pyenv-virtualenv 2>&1 > /dev/null; then
+  if [ -e "$(pyenv root)"/.pyenv/plugins/pyenv-virtualenv ] || type -P pyenv-virtualenv > /dev/null 2>&1;  then
     # auto enable pyenv-virtualenv virtual envionments
     eval "$(pyenv virtualenv-init -)"
   fi
@@ -38,7 +38,7 @@ fi
 # if I have my own bin add it to my path
 # put it ahead of the system
 # this allows me to use my own version of tools such as tmux
-[ -d $HOME/bin ] && export PATH=$HOME/bin:$PATH
+[ -d "$HOME/bin" ] && export PATH=$HOME/bin:$PATH
 
 
 
@@ -56,18 +56,18 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 
 # this probably needs more checks.  Does complete exist?  bundle with above bash completion check
 AWS_COMPLETER=$(which aws_completer 2>/dev/null)
-if [ -z ${AWS_COMPLETER} ]; then
+if [ -z "${AWS_COMPLETER}" ]; then
   echo "no aws completer found aws cli completion not set"
 else
-  complete -C ${AWS_COMPLETER} aws
+  complete -C "${AWS_COMPLETER}" aws
 fi
 
 # test if running in a container
 # not sure how generally this will work
 CGROUP='/proc/1/cgroup'
 if [ -r $CGROUP ] && head -1 $CGROUP | grep --quiet docker; then
-  if [ -r $HOME/.docker-extras/.databrickscfg ];then
-    cp $HOME/.docker-extras/.databrickscfg $HOME/.databrickscfg
+  if [ -r "$HOME"/.docker-extras/.databrickscfg ];then
+    cp "$HOME"/.docker-extras/.databrickscfg "$HOME"/.databrickscfg
   fi
 fi
 
@@ -84,5 +84,5 @@ export SDKMAN_DIR=~/.sdkman
 [[ -s ~/.sdkman/bin/sdkman-init.sh ]] && source ~/.sdkman/bin/sdkman-init.sh
 
 # rust environment
-[[ -s $HOME/.cargo/env ]] && source $HOME/.cargo/env
+[[ -s "$HOME"/.cargo/env ]] && source "$HOME"/.cargo/env
 . "$HOME/.cargo/env"
