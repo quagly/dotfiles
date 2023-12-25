@@ -57,7 +57,9 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 # this probably needs more checks.  Does complete exist?  bundle with above bash completion check
 AWS_COMPLETER=$(which aws_completer 2>/dev/null)
 if [ -z "${AWS_COMPLETER}" ]; then
-  echo "no aws completer found aws cli completion not set"
+  # echo "no aws completer found aws cli completion not set"
+  # I don't use aws cli so much anymore so don't need this warning
+  :
 else
   complete -C "${AWS_COMPLETER}" aws
 fi
@@ -85,4 +87,3 @@ export SDKMAN_DIR=~/.sdkman
 
 # rust environment
 [[ -s "$HOME"/.cargo/env ]] && source "$HOME"/.cargo/env
-. "$HOME/.cargo/env"
