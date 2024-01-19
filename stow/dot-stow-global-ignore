@@ -1,0 +1,11 @@
+# Comments and blank lines are allowed.
+# See https://www.gnu.org/software/stow/manual/html_node/Ignore-Lists.html#Ignore-Lists
+
+\.git
+\.DS_Store
+# \.gitignore
+
+
+^/README.*
+^/LICENSE.*
+^/COPYING
