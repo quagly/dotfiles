@@ -1,13 +1,21 @@
-# global personal gitignore
-
-# Mac
 .DS_Store
+## from https://github.com/github/gitignore/blob/main/Global/Vim.gitignore
+# Swap
+[._]*.s[a-v][a-z]
+!*.svg  # comment out if you don't need vector files
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
 
-# intellij
-.idea/
+# Session
+Session.vim
+Sessionx.vim
 
-# ignore .python_version virtual env
-.python_version
-
-# ignore vim temp files
-*.sw[op]
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags
+# Persistent undo
+[._]*.un~
