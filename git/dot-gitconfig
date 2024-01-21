@@ -4,7 +4,10 @@
 [merge]
   tool = vimdiff
 [credential]
+  username = quagly
+  # helpers are tried in order
   helper = osxkeychain
+  helper = store
 [push]
   default = simple
 [mergetool]
