@@ -6,7 +6,10 @@ source "${HOME}"/.bashrc
 set -o vi
 
 # prepend homebrew to path first so that other prepends override it.
-[ -d /opt/homebrew/bin ] && export PATH=/opt/homebrew/bin:$PATH
+# this is the old way.  
+# [ -d /opt/homebrew/bin ] && export PATH=/opt/homebrew/bin:$PATH
+# New way is more comprehensive
+[ -d /opt/homebrew/bin ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # if I have gnubin from coreutils install from homebrew
 # prefer those binaries to osx installed binaries
