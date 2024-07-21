@@ -32,7 +32,8 @@ let g:pymode = 1
 " but it isn't working right now
 " may look at new completion plugins
 " enable rope for now
-let g:pymode_rope = 1
+" disabling rope as it is throwing errors
+let g:pymode_rope = 0
 
 " turn on/off completion
 let g:pymode_rope_completion = 1
